@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:gatekeeper/Routes/set_routes.dart';
-import 'package:gatekeeper/Utils/constants.dart';
+
 import 'package:get/get.dart';
+
+import '../../../Constants/constants.dart';
 
 
 class SplashScreen extends StatefulWidget {

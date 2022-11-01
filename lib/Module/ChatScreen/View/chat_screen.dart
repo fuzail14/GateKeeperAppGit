@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gatekeeper/Constants/constants.dart';
 import 'package:gatekeeper/Models/chat_message_model.dart';
 
 import 'package:get/get.dart';
 
-import '../../../Utils/constants.dart';
+
 
 
 
@@ -43,7 +44,7 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: overallcolor,
+        backgroundColor: primaryColor,
         flexibleSpace: SafeArea(
           child: Container(
             padding: EdgeInsets.only(right: 16),
@@ -74,7 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        name,
+                        "",
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w500,
                             color: Colors.white
@@ -112,7 +113,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         borderRadius: BorderRadius.circular(20),
                         color: (messages[index].messageType == "receiver"
                             ? Colors.black54
-                            : overallcolor),
+                            : primaryColor),
                       ),
                       padding: EdgeInsets.all(16),
                       child: Text(
@@ -157,7 +158,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       color: Colors.white,
                       size: 18,
                     ),
-                    backgroundColor: overallcolor,
+                    backgroundColor: primaryColor,
                     elevation: 0,
                   ),
                 ],

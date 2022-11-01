@@ -1,12 +1,21 @@
 import 'dart:core';
-
 const String splashscreen = '/SplashScreen';
 const String loginscreen = '/LoginScreen';
-const String userhomecreen = '/UserHomeScreen';
-const String eventsscreen = '/EventsScreen';
+const String homecreen = '/HomeScreen';
 const String chatscreen = '/ChatScreen';
 const String chatavailbilityscreen = '/ChatAvailbilityScreen';
 const String addreporttoadminscreen = '/AddReportToAdminScreen';
 const String reporttoadminscreen = '/ReportToAdminScreen';
-const String reporttogatekeeperscreen = '/ReportToGateKeeperScreen';
-const String addreporttogatekeeperscreen = '/AddReportToGateKeeperScreen';
+const String guestArrivalNotificationScreen = '/GuestArrivalNotificationScreen';
+const String guestArrivalNotificationEntryScreen = '/GuestArrivalNotificationEntryScreen';
+const String preApprovedGuests = '/PreApprovedGuests';
+const String gateKeeperAttendance = '/GateKeeperAttendance';
+const String societyEvents = '/SocietyEvents';
+const String serviceProviderCheckIn = '/ServiceProviderCheckIn';
+const String serviceProviderCheckOut = '/ServiceProviderCheckOut';
+const String walkInGuests = '/WalkInGuests';
+const String addWalkInGuestsDetail = '/AddWalkInGuestsDetail';
+const String panicMode = '/PanicMode';
+
+
+

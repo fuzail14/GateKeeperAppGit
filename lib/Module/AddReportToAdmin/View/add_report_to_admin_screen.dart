@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:gatekeeper/Constants/constants.dart';
+import 'package:gatekeeper/Constants/constants.dart';
 import 'package:gatekeeper/Module/AddReportToAdmin/Controller/add_report_to_admin_controller.dart';
 import 'package:gatekeeper/Routes/set_routes.dart';
-import 'package:gatekeeper/Utils/constants.dart';
+
 import 'package:get/get.dart';
 
 class AddReportToAdminScreen extends StatefulWidget {
@@ -17,9 +19,9 @@ class _AddReportToAdminScreenScreenState extends State<AddReportToAdminScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+
         title: Text('Add Report Detail'),
-        backgroundColor: overallcolor,
+        backgroundColor: primaryColor,
       ),
       body: GetBuilder<AddReportToAdminController>(
           init: AddReportToAdminController(),
@@ -33,6 +35,8 @@ class _AddReportToAdminScreenScreenState extends State<AddReportToAdminScreen> {
                     padding: EdgeInsets.only(left: 10, top: 30),
                     child: ListView(
                       children: <Widget>[
+                        
+                      Image.asset('assets/report.png'),
                         // second Element
                         TextFormField(
                           controller: controller.nameController,
@@ -142,7 +146,7 @@ class _AddReportToAdminScreenScreenState extends State<AddReportToAdminScreen> {
                             Expanded(
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: overallcolor,
+                                  primary: primaryColor,
                                   shape: new RoundedRectangleBorder(
                                     borderRadius:
                                         new BorderRadius.circular(30.0),

@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:gatekeeper/Constants/constants.dart';
 import 'package:gatekeeper/Routes/set_routes.dart';
-import 'package:gatekeeper/Utils/constants.dart';
 
 import 'package:get/get.dart';
 
@@ -21,8 +21,8 @@ class _ReportToAdminScreenState extends State<ReportToAdminScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Admin Report'),
-        automaticallyImplyLeading: false,
-        backgroundColor: overallcolor,
+      
+        backgroundColor: primaryColor,
         actions: [
           Padding(
               padding: EdgeInsets.only(right: 20.0),
@@ -76,13 +76,13 @@ class _ReportToAdminScreenState extends State<ReportToAdminScreen> {
                               btnCancelOnPress: () {},
                               btnOkOnPress: () {},
                               btnOkText: 'Delete',
-                              btnOkColor: overallcolor,
-                              btnCancelColor: overallcolor,
+                              btnOkColor: primaryColor,
+                              btnCancelColor: primaryColor,
                             )..show();
                           },
                           child: Icon(
                             Icons.delete,
-                            color: overallcolor,
+                            color: primaryColor,
                           ),
                         ),
                         SizedBox(
@@ -94,7 +94,7 @@ class _ReportToAdminScreenState extends State<ReportToAdminScreen> {
                         //   },
                         //   child: Icon(
                         //     Icons.edit,
-                        //     color: overallcolor,
+                        //     color: primaryColor,
                         //   ),
                         // ),
                       ]),
