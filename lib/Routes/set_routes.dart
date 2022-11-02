@@ -1,7 +1,7 @@
 import 'dart:core';
 const String splashscreen = '/SplashScreen';
 const String loginscreen = '/LoginScreen';
-const String homecreen = '/HomeScreen';
+const String homescreen = '/HomeScreen';
 const String chatscreen = '/ChatScreen';
 const String chatavailbilityscreen = '/ChatAvailbilityScreen';
 const String addreporttoadminscreen = '/AddReportToAdminScreen';
@@ -16,6 +16,11 @@ const String serviceProviderCheckOut = '/ServiceProviderCheckOut';
 const String walkInGuests = '/WalkInGuests';
 const String addWalkInGuestsDetail = '/AddWalkInGuestsDetail';
 const String panicMode = '/PanicMode';
+const String eventsscreen = '/EventsScreen';
+const String noticeboardscreen = '/NoticeBoardScreen';
+
+
+
 
 
 

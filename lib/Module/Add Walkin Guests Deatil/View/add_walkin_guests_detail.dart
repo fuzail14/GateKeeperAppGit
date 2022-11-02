@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gatekeeper/Constants/Widgets/My%20TextFormFields/my_textform_field.dart';
 import 'package:gatekeeper/Constants/constants.dart';
-import 'package:gatekeeper/Constants/my_button.dart';
+
+import '../../../Widgets/My Button/my_button.dart';
+import '../../../Widgets/My TextForm Field/my_textform_field.dart';
 
 class AddWalkinGuestsDetail extends StatefulWidget {
   const AddWalkinGuestsDetail({Key? key}) : super(key: key);
@@ -85,39 +86,39 @@ class _AddWalkinGuestsDetailState extends State<AddWalkinGuestsDetail> {
             isOther
                 ? MyTextFormField(
                     hintText: 'Enter Person Type',
-                    obscureText: false,
+                padding: EdgeInsets.all(8),
                     labelText: 'Enter Person Type',
                     onFocusedBorderColor: primaryColor,
                     onEnabledBorderColor: primaryColor)
                 : Text(""),
             MyTextFormField(
                 hintText: 'Enter Name',
-                obscureText: false,
+                padding: EdgeInsets.all(8),
                 labelText: 'Name',
                 onFocusedBorderColor: primaryColor,
                 onEnabledBorderColor: primaryColor),
             MyTextFormField(
                 hintText: 'Enter Mobile Number',
-                obscureText: false,
+                padding: EdgeInsets.all(8),
                 labelText: 'Mobile',
                 onFocusedBorderColor: primaryColor,
                 onEnabledBorderColor: primaryColor),
             MyTextFormField(
                 hintText: 'Enter Cnic',
-                obscureText: false,
+
                 labelText: 'Cnic',
                 onFocusedBorderColor: primaryColor,
-                onEnabledBorderColor: primaryColor),
+                onEnabledBorderColor: primaryColor, padding: EdgeInsets.all(8),),
             SizedBox(
               width: 400,
               child: MyButton(
                 border: 8,
                 horizontalPadding: 8,
                 verticalPadding: 8,
-                name: 'Send Request',
-                color: primaryColor,
-                maxLines: 1,
-                onPressed: () {},
+
+
+
+                onPressed: () {}, child: Text('save'),
               ),
             )
           ],

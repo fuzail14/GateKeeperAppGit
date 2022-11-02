@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gatekeeper/Constants/constants.dart';
 
 import 'package:get/get.dart';
-import '../../../Constants/view_image.dart';
+
 import '../../../Routes/set_routes.dart';
+import '../../../Widgets/image_show.dart';
 
 class GuestArrivalNotifications extends StatefulWidget {
   const GuestArrivalNotifications({Key? key}) : super(key: key);
@@ -104,7 +105,7 @@ class _GuestArrivalNotificationsState extends State<GuestArrivalNotifications> {
                 shadowColor: Colors.black,
                 child: ListTile(leading:InkWell(onTap: (){
 
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewImage(tag: 'image1', img: 'assets/kk.webp')));
+                  // Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewImage(tag: 'image1', img: 'assets/kk.webp')));
 
 
                 },

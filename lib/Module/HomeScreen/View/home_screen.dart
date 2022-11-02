@@ -4,9 +4,17 @@ import 'package:gatekeeper/Constants/constants.dart';
 import 'package:get/get.dart';
 import 'package:badges/badges.dart';
 import '../../../Routes/set_routes.dart';
+import '../../../Services/Shared Preferences/MySharedPreferences.dart';
+import '../../Login/Model/User.dart';
 class HomeScreen extends StatelessWidget {
+
+  var argument = Get.arguments;
+
+  late final User? user;
   @override
   Widget build(BuildContext context) {
+    user = argument;
+    
     return Scaffold(
       drawer: Drawer(
         child: ListView(
@@ -69,6 +77,7 @@ class HomeScreen extends StatelessWidget {
               ),
               title: const Text('Logout'),
               onTap: () {
+                MySharedPreferences.deleteUserData();
                 Get.offAllNamed(loginscreen);
               },
             ),
@@ -272,7 +281,7 @@ Get.toNamed(preApprovedGuests);
               //       ],),),
               // ),
               GestureDetector(onTap: (){
-                Get.toNamed(societyEvents);
+                Get.toNamed(eventsscreen,arguments: user);
 
               },
                 child: Container(height: 100,width: 100,
@@ -319,7 +328,7 @@ Get.toNamed(preApprovedGuests);
               // ),
               GestureDetector(onTap: (){
 
-                Get.toNamed(reporttoadminscreen);
+                Get.toNamed(noticeboardscreen,arguments: user);
               },
                 child: Container(height: 100,width: 100,
                   decoration: BoxDecoration(

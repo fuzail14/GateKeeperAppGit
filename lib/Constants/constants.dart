@@ -1,109 +1,73 @@
 import 'dart:io';
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/cupertino.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-final Color primaryColor= HexColor("#00BFA6");
-final Color whiteColor= HexColor("#ffffff");
-const String assetsBaseUrl="images/";
-const String logo='${assetsBaseUrl}logo.png';
-const splashlogo = 'assets/mia.png';
-const userpic = 'assets/k.webp';
-const userpic2 = 'assets/kk.webp';
 
-final Gradient?   gradient=LinearGradient(
-begin: Alignment.topRight,
-end: Alignment.bottomLeft,
-stops: [
-0.1,
-0.4,
+final Color primaryColor = HexColor("#00BFA6");
+const String assetsBaseUrl = "assets/";
+const String logo = '${assetsBaseUrl}mia.png';
 
-],
-
-colors: [
-  HexColor("#AEF5E6"),
-
-
-
-  primaryColor,
-
-],
-);
-
-
-pickFile() async {
-
-  FilePickerResult? result = await FilePicker.platform.pickFiles();
-  File file = File(result!.files.single.path.toString());
-  if (result != null) {
-    File file = File(result.files.single.path.toString());
-
-    // List<int> imageBytes = file.readAsBytesSync();
-    // String base64Image = base64Encode(imageBytes);
-    print(file.path);
-    // print(file.absolute);
-    // print(file.isAbsolute);
-    // print(file.uri);
-    //
-    // print(base64Image);
-return file.path;
-    // print(file.readAsBytesSync());
-  } else {
-    // User canceled the picker
-    return file.path;
-  }
-}
+//
+// getFile() async {
+//   var file;
+//   // String? base64Image;
+//   //
+//
+//
+//   FilePickerResult? result = await FilePicker.platform.pickFiles();
+//
+//   if (result != null) {
+//     file = File(result.files.single.path!);
+//
+//     print(file);
+//     // isFile = true;
+//     //  List<int> imageBytes = _file!.readAsBytesSync();
+//     //
+//     //  print(imageBytes);
+//     // base64Image = base64Encode(imageBytes);
+//     //  print(base64Image);
+//
+//     return file;
+//   } else {
+//     // View Users canceled the picker
+//   }
+// }
 
 
-Future<TimeOfDay?> selectTime(BuildContext context) async {
-  TimeOfDay selectedTime = TimeOfDay.now();
-  final TimeOfDay? timeOfDay = await showTimePicker(
-    context: context,
-    initialTime: selectedTime,
-    initialEntryMode: TimePickerEntryMode.dial,
-  );
-  if(timeOfDay != null && timeOfDay != selectedTime)
-  {
+Future<String> getDate(BuildContext context) async {
+  DateTime date = new DateTime(2022, 12, 24);
+  String? myDate;
 
- selectedTime = timeOfDay;
-return selectedTime;
-  }
-}
-
-Future<String> getDate(BuildContext context) async
-{  DateTime date = new DateTime(2022, 12, 24);
-String? myDate;
-
-DateTime? newDate = await showDatePicker
-  (builder:(context,child){
-    return  Theme(
-      data: Theme.of(context).copyWith(
-        colorScheme: ColorScheme.light(
-          primary:primaryColor, // <-- SEE HERE
-          // <-- SEE HERE
-      // <-- SEE HERE
-        ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            primary: primaryColor, // button text color
+  DateTime? newDate = await showDatePicker(
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: primaryColor, // <-- SEE HERE
+              // <-- SEE HERE
+              // <-- SEE HERE
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: primaryColor, // button text color
+              ),
+            ),
           ),
-        ),
-      ),
-      child: child!,
-    );
-} ,
-    context: context,
-    initialDate: date,
-    firstDate: DateTime(1900),
-    lastDate: DateTime(2100));
-if (newDate == null) {
-  return "";
-}
+          child: child!,
+        );
+      },
+      context: context,
+      initialDate: date,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100));
+  if (newDate == null) {
+    return "";
+  }
 
-
- date = newDate;
-print(date);
+  date = newDate;
+  print(date);
 
   date.month;
   date.year;
@@ -114,26 +78,22 @@ print(date);
       "/" +
       date.year.toString();
 
-
-return myDate;
+  return myDate;
 }
 
 /* Validations */
 
-String? emptyStringValidator (String? val)
-{ String string = val!.trim();
+String? emptyStringValidator(String? val) {
+  String string = val!.trim();
 
-  if ( string.isEmpty)
-    {
-      return "This field is required";
-    }
-else {
+  if (string.isEmpty) {
+    return "This field is required";
+  } else {
     return null;
   }
 }
 
-
-String? passwordValidator (String? v) {
+String? passwordValidator(String? v) {
   RegExp smallAlphabets = RegExp("(?=.*?[a-z])");
   RegExp capitalAlphabets = RegExp("(?=.*?[A-Z])");
   RegExp specialCharacter = RegExp("(?=.*?[#?!@\$%^&*-])");
@@ -152,10 +112,11 @@ String? passwordValidator (String? v) {
     return null;
   }
 }
-String? emailValidator (String? v) {
+
+String? emailValidator(String? v) {
   String string = v!.trim();
   bool _emailValid = RegExp(
-      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+          r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
       .hasMatch(string);
 
   if (string.isEmpty) {
@@ -167,13 +128,9 @@ String? emailValidator (String? v) {
   }
 }
 
-
-
-
-String? cnicValidator (String? v) {
+String? cnicValidator(String? v) {
   String string = v!.trim();
-  bool _cnicValid = RegExp("^[0-9]{5}-[0-9]{7}-[0-9]\$")
-      .hasMatch(string);
+  bool _cnicValid = RegExp("^[0-9]{5}-[0-9]{7}-[0-9]\$").hasMatch(string);
 
   if (string.isEmpty) {
     return 'Please enter your CNIC';
@@ -183,15 +140,3 @@ String? cnicValidator (String? v) {
     return null;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
