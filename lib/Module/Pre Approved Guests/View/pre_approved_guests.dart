@@ -1,259 +1,318 @@
-
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gatekeeper/Constants/constants.dart';
+import 'package:gatekeeper/Module/Pre%20Approved%20Guests/Controller/pre_approve_entries_controller.dart';
+import 'package:gatekeeper/Widgets/My%20TextForm%20Field/my_textform_field.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 
+import '../../../Widgets/My Back Button/my_back_button.dart';
+import '../../../Widgets/My Button/my_button.dart';
 
-
-import 'guestdetails.dart';
-
-class PreApprovedGuests extends StatefulWidget {
-  const PreApprovedGuests({Key? key}) : super(key: key);
-
-  @override
-  State<PreApprovedGuests> createState() => _PreApprovedGuestsState();
-}
-
-class _PreApprovedGuestsState extends State<PreApprovedGuests> {
-  bool isChecked=false;
-  bool isCheckedOut=false;
+class PreApprovedGuests extends GetView {
+  bool isChecked = false;
+  bool isCheckedOut = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-
-      child: Scaffold(
-          appBar: AppBar(
-        backgroundColor: primaryColor,
-        title: Text("Pre Approved Guests"),centerTitle: true,),
-          body:SingleChildScrollView(
-          child: Column(
-            children: [
-
-       isCheckedOut? Padding(
-         padding: const EdgeInsets.all(8.0),
-         child: Center(
-           child: Container(
-             width: 200,
-             child: Column(
-               children: [
-                 Image.asset(
-                   'assets/taskcompleted.png',
-                   width: 100,
-                 ),
-                 Text(
-                   "Guest Checkout Successfully",
-                   textAlign: TextAlign.center,
-                   style: TextStyle(
-                       color: primaryColor,
-                       fontWeight: FontWeight.bold,
-                       fontSize: 15),
-                 )
-               ],
-             ),
-           ),
-         ),
-       ):   GestureDetector(onTap: (){
-                showDialog(
-                  context: context,
-                  builder: (context){
-
-
-                    return StatefulBuilder(builder: (context,setSate)
-                    {
-
-                      return AlertDialog(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(32.0))),
-                        contentPadding: EdgeInsets.only(top: 10.0),
-                        title: Text("Guest Details"),
-                        content: GuestDetails(),
-                      );
-                    });
-                  }
-
-
-                );
-
-
-
-              },
-                child: Padding(padding: EdgeInsets.all(8),
-                  child:
-                  Card(
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0)),
-                    elevation: 50,
-                    shadowColor: Colors.black,
-                    child: SizedBox(
-                      width: 400,
-
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: CircleAvatar(
-                              backgroundColor: primaryColor,
-                              radius: 40,
-                              child: const CircleAvatar(
-                                backgroundImage:AssetImage("assets/k.webp"), //NetworkImage
-                                radius: 37,
-                              ), //CircleAvatar
-                            ),
-                          ), //CircleAvatar
-                          const SizedBox(
-                            height: 10,
-                          ), //SizedBox
-                          Center(
-                            child: Text(
-                              'Suleman Awan',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                              ), //Textstyle
-                            ),
-                          ),
-                          Padding(padding: EdgeInsets.fromLTRB(8, 10, 8, 0),
-                              child: Row(children: [
-                                Text("Address",style: TextStyle(fontWeight: FontWeight.bold),),
-                                Padding(padding: EdgeInsets.fromLTRB(50, 0, 8, 0),
-                                    child: Text("House no 2 Room n66f",))],)),//Text
-                          Padding(padding: EdgeInsets.fromLTRB(8, 10, 8, 0),
-                              child: Row(children: [
-                                Text("Resident Name",style: TextStyle(fontWeight: FontWeight.bold),),
-                                Padding(padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
-                                    child: Text("Suleman Awan"))],)),//Text
-                          Padding(padding: EdgeInsets.fromLTRB(8, 10, 8, 0),
-                              child: Row(children: [
-                                Text("CheckIn Time",style: TextStyle(fontWeight: FontWeight.bold),),
-                                Padding(padding: EdgeInsets.fromLTRB(19, 0, 8, 0),
-                                    child: Text("4:00 pm"))],)),//Text
-                          Padding(padding: EdgeInsets.fromLTRB(8, 10, 8, 0),
-                              child: Row(children: [
-                                Text("Date",style: TextStyle(fontWeight: FontWeight.bold),),
-                                Padding(padding: EdgeInsets.fromLTRB(75, 0, 8, 0),
-                                    child: Text("10-08-2022"))],)),//Text
-
-                         isChecked?Padding(padding: EdgeInsets.all(10),
-                           child: Container(width: MediaQuery.of(context).size.width,
-                             child: ElevatedButton(onPressed: (){
-
-
-                               AwesomeDialog(
-                                 context: context,
-                                 dialogType: DialogType.QUESTION,
-                                 animType: AnimType.BOTTOMSLIDE,
-                                 title: 'Are You Sure',
-                                 desc:
-                                 'Do You Want To Checkout this Guest ?',
-                                 btnCancelOnPress: () {},
-                                 btnOkOnPress: () {
-
-                                   isCheckedOut=true;
-                                   setState(() {});
-                                 },
-                                 btnOkText: 'Yes',
-                                 btnOkColor: primaryColor,
-                                 btnCancelColor: primaryColor,
-                               )..show();
-                               setState(() {});
-
-
-                             }, child: Text("Check Out",style: TextStyle(),),
-                               style: ElevatedButton.styleFrom(shape: StadiumBorder(),primary: Colors.green),
-
-                             ),
-                           ),
-                         ):
-
-                         Padding(padding: EdgeInsets.all(10),
-                            child: Container(width: MediaQuery.of(context).size.width,
-                              child: ElevatedButton(onPressed: (){
-
-                                showDialog(
-                                  context: context,
-                                  builder :(context ){
-
-
-                                    return StatefulBuilder(builder: (context,setStae)
-
-                                    {
-                                      return  AlertDialog(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                            BorderRadius.all(Radius.circular(32.0))),
-                                        contentPadding: EdgeInsets.only(top: 10.0),
-                                        title: Text("Guest Arrival Detail Entry"),
-                                        content: Container(
-                                            height: MediaQuery.of(context).size.height,
-                                            width: MediaQuery.of(context).size.width,
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(20.0),
-                                              child: Column(
-
+        child: GetBuilder<PreApproveEntries>(
+            init: PreApproveEntries(),
+            builder: (controller) {
+              return Scaffold(
+                body: Stack(
+                  children: [
+                    FutureBuilder(
+                        future: controller.preApproveEntriesApi(
+                            controller.data.userid, controller.token),
+                        builder:
+                            (BuildContext context, AsyncSnapshot snapshot) {
+                          if (snapshot.hasData) {
+                            return Column(
+                              children: [
+                                MyBackButton(
+                                  text: 'Pre Approve Entry',
+                                ),
+                                Expanded(
+                                  child: ListView.builder(
+                                    itemCount: snapshot.data.data.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return GestureDetector(
+                                        onTap: () {},
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 16, vertical: 13),
+                                          child: SizedBox(
+                                            width: 343,
+                                            height: 79,
+                                            child: Card(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(18.0),
+                                              ),
+                                              child: Stack(
                                                 children: [
-
-                                                  Padding(padding:EdgeInsets.all(10.0),
-                                                      child: TextFormField(decoration: InputDecoration(label: Text("Cnic")),)),
-                                                  Padding(padding:EdgeInsets.all(10.0),
-                                                      child: TextFormField(decoration: InputDecoration(label: Text("Mobile Number")),)),
-                                                  Padding(padding:EdgeInsets.all(10.0),
-                                                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                      children: [Text("Time"),Text("4:30 pm")],),
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.topRight,
+                                                    child: SvgPicture.asset(
+                                                        'assets/cardbg.svg',
+                                                        fit: BoxFit.fill),
                                                   ),
-                                                  Container(width: 100,
-                                                    child: ElevatedButton(onPressed: (){
-
-                                                      isChecked=true;
-                                                      print(isChecked);
-                                                      Get.back();
-
-setState(() {
-
-});
-
-
-                                                    }, child: Text("Save",style: TextStyle(),),
-                                                      style: ElevatedButton.styleFrom(shape: StadiumBorder(),primary: Colors.green),
-
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsets.fromLTRB(
+                                                            12, 11, 0, 0),
+                                                    child: Text(
+                                                      snapshot.data.data[index]
+                                                          .name,
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                              color: HexColor(
+                                                                  '#4D4D4D'),
+                                                              fontSize: 16,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
                                                     ),
-                                                  )
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                            .fromLTRB(
+                                                        13, 32, 75, 0),
+                                                    child: Row(
+                                                      children: [
+                                                        Text(
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          maxLines: 3,
+                                                          'Vistor Type: ',
+                                                          style: GoogleFonts.ubuntu(
+                                                              color: HexColor(
+                                                                  '#757575'),
+                                                              fontSize: 12,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                        ),
+                                                        Text(
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          maxLines: 3,
+                                                          snapshot
+                                                              .data
+                                                              .data[index]
+                                                              .visitortype
+                                                              .toString(),
+                                                          style: GoogleFonts.ubuntu(
+                                                              color: HexColor(
+                                                                  '#757575'),
+                                                              fontSize: 12,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 50, 0, 0),
+                                                    child: Row(
+                                                      children: [
+                                                        SizedBox(
+                                                          width: 11.2,
+                                                        ),
+                                                        Text(
+                                                          'Expected Time: ',
+                                                          style: GoogleFonts.ubuntu(
+                                                              color: HexColor(
+                                                                  '#A5AAB7'),
+                                                              fontSize: 10,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300),
+                                                        ),
+                                                        Text(
+                                                          snapshot
+                                                              .data
+                                                              .data[index]
+                                                              .arrivaltime,
+                                                          style: GoogleFonts.ubuntu(
+                                                              color: HexColor(
+                                                                  '#A5AAB7'),
+                                                              fontSize: 12,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  (snapshot.data.data[index]
+                                                              .status !=
+                                                          0)
+                                                      ? GestureDetector(
+                                                          onTap: () {
+                                                            showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder: (BuildContext
+                                                                        context) =>
+                                                                    AlertDialog(
+                                                                      title:
+                                                                          Column(
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Center(
+                                                                              child: Text(
+                                                                            'Pre Approve Entry',
+                                                                            style: GoogleFonts.ubuntu(
+                                                                                color: HexColor('#4D4D4D'),
+                                                                                fontSize: 18,
+                                                                                fontWeight: FontWeight.w700),
+                                                                          )),
+                                                                          SizedBox(
+                                                                            height:
+                                                                                24,
+                                                                          ),
+                                                                          Center(
+                                                                            child:
+                                                                                MyTextFormField(
+                                                                              width: 173,
+                                                                              height: 30,
+                                                                              labelText: "CNIC",
+                                                                              hintText: 'CNIC',
+                                                                              onEnabledBorderColor: HexColor('#FF9900'),
+                                                                              onFocusedBorderColor: HexColor('#FF9900'),
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height:
+                                                                                14,
+                                                                          ),
+                                                                          Center(
+                                                                            child:
+                                                                                MyTextFormField(
+                                                                              width: 173,
+                                                                              height: 30,
+                                                                              labelText: "VEHICLE NO",
+                                                                              hintText: 'VEHICLE NO',
+                                                                              onEnabledBorderColor: HexColor('#FF9900'),
+                                                                              onFocusedBorderColor: HexColor('#FF9900'),
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height:
+                                                                                37,
+                                                                          ),
+                                                                          Padding(
+                                                                            padding:  EdgeInsets.fromLTRB(50,0,0,0),
+                                                                            child: Row(
+                                                                              children: [
+                                                                                GestureDetector(
+                                                                                  onTap:
+                                                                                      () {
+                                                                                    Get.back();
+                                                                                  },
+                                                                                  child:
+                                                                                      MyStatusWidget(
+                                                                                    width: 81,
+                                                                                    height: 22,
+                                                                                    status: 'Check In',
+                                                                                    color: HexColor('#26B82C'),
+                                                                                  ),
+                                                                                ),
+                                                                             
+                                                                             SizedBox(width: 13,),
+                                                                                GestureDetector(
+                                                                                  onTap:
+                                                                                      () {
+                                                                                    Get.back();
+                                                                                  },
+                                                                                  child:
+                                                                                      MyStatusWidget(
+                                                                                    width: 81,
+                                                                                    height: 22,
+                                                                                    status: 'Cancel',
+                                                                                    color: HexColor('#BABABA'),
+                                                                                  ),
+                                                                                ),
+                                                                             
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ));
+                                                          },
+                                                          child: Padding(
+                                                            padding: EdgeInsets
+                                                                .fromLTRB(0, 42,
+                                                                    14, 0),
+                                                            child: Align(
+                                                              alignment:
+                                                                  Alignment
+                                                                      .topRight,
+                                                              child:
+                                                                  MyStatusWidget(
+                                                                width: 81,
+                                                                height: 22,
+                                                                status:
+                                                                    'Check In',
+                                                                color: HexColor(
+                                                                    '#26B82C'),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        )
+                                                      : Container()
                                                 ],
                                               ),
-                                            )),
+                                            ),
+                                          ),
+                                        ),
                                       );
-                                    }
-                                    );
-                                  }
-
-
-                                );
-
-
-                              }, child: Text("Check In",style: TextStyle(),),
-                                style: ElevatedButton.styleFrom(shape: StadiumBorder(),primary: Colors.green),
-
-                              ),
-                            ),
-                          ) //Text
-                          //Text
-                      //SizedBox
-                        ],
-                      ), //Padding
-                    ), //SizedBox
-                  ),
+                                    },
+                                  ),
+                                ),
+                              ],
+                            );
+                          } else if (snapshot.hasError) {
+                            return Icon(Icons.error_outline);
+                          } else {
+                            return CircularProgressIndicator();
+                          }
+                        }),
+                  ],
                 ),
-              ) , //Card
-
-
-            ],
-          ))),
-    );
-
-
+              );
+            }));
   }
 
-
-
+  Widget MyStatusWidget(
+      {required status,
+      required color,
+      Color? textcolor,
+      double? width,
+      double? height}) {
+    return Container(
+      width: width ?? 64,
+      height: height ?? 18,
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(4)),
+      child: Center(
+        child: Text(
+          status,
+          style: TextStyle(
+            fontSize: 10,
+            color: textcolor ?? HexColor('#FFFFFF'),
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
+    );
+  }
 }

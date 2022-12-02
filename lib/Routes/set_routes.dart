@@ -6,7 +6,8 @@ const String chatscreen = '/ChatScreen';
 const String chatavailbilityscreen = '/ChatAvailbilityScreen';
 const String addreporttoadminscreen = '/AddReportToAdminScreen';
 const String reporttoadminscreen = '/ReportToAdminScreen';
-const String guestArrivalNotificationScreen = '/GuestArrivalNotificationScreen';
+const String  preApproveEntryResidents = '/PreApproveEntryResidents';
+const String  preApproveEntryNotificationonScreen = '/PreApproveEntryNotificationonScreen';
 const String guestArrivalNotificationEntryScreen = '/GuestArrivalNotificationEntryScreen';
 const String preApprovedGuests = '/PreApprovedGuests';
 const String gateKeeperAttendance = '/GateKeeperAttendance';
@@ -18,8 +19,6 @@ const String addWalkInGuestsDetail = '/AddWalkInGuestsDetail';
 const String panicMode = '/PanicMode';
 const String eventsscreen = '/EventsScreen';
 const String noticeboardscreen = '/NoticeBoardScreen';
-
-
 
 
 

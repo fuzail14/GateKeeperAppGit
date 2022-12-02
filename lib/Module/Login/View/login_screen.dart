@@ -40,9 +40,10 @@ class _LoginState extends State<Login> {
                           ),
 
                           MyTextFormField(controller: controller.userCnicController
-                              ,padding: EdgeInsets.all(8),
-                              keyboardType: TextInputType.number,
-                              validator: emptyStringValidator,
+                              //padding: EdgeInsets.all(8),
+                              //keyboardType: TextInputType.number,
+                              
+                              ,validator: emptyStringValidator,
                               hintText: 'Enter Cnic',
                               labelText: 'Cnic',
                               onFocusedBorderColor: primaryColor,
@@ -65,7 +66,8 @@ class _LoginState extends State<Login> {
                             height: 20,
                           ),
                      MyButton(width: MediaQuery.of(context).size.width,
-                       horizontalPadding: 8, verticalPadding: 8, child: Text('Login'),
+                       
+                        name: 'Login',
                       onPressed: ()
 
                        {

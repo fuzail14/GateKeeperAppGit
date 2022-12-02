@@ -1,374 +1,459 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gatekeeper/Constants/constants.dart';
+import 'package:gatekeeper/Module/HomeScreen/Controller/home_screen_controller.dart';
 import 'package:get/get.dart';
 import 'package:badges/badges.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import '../../../Routes/set_routes.dart';
 import '../../../Services/Shared Preferences/MySharedPreferences.dart';
 import '../../Login/Model/User.dart';
+
 class HomeScreen extends StatelessWidget {
-
-  var argument = Get.arguments;
-
-  late final User? user;
   @override
   Widget build(BuildContext context) {
-    user = argument;
-    
-    return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
+    return GetBuilder<HomeScreenController>(
+      init: HomeScreenController(),
+      builder: (controller) => SafeArea(
+        child: Scaffold(
+          //  drawer: Drawer(
+          //   child: ListView(
+          //     padding: EdgeInsets.zero,
+          //     children: [
+          //       const DrawerHeader(
+          //         child: Text('Society User'),
+          //       ),
+          //       ListTile(
+          //         leading: Icon(
+          //           Icons.event,
+          //         ),
+          //         title: const Text('Society Events'),
+          //         onTap: () {
+          //           Get.toNamed(societyEvents);
+          //         },
+          //       ),
+          //       ListTile(
+          //         leading: Icon(
+          //           Icons.how_to_reg,
+          //         ),
+          //         title: const Text('Pre Approved Guests'),
+          //         onTap: () {
+          //           Get.toNamed(preApprovedGuests);
+          //         },
+          //       ),
+          //       ListTile(
+          //         leading: Icon(
+          //           Icons.logout,
+          //         ),
+          //         title: const Text('Logout'),
+          //         onTap: () {
+          //           MySharedPreferences.deleteUserData();
+          //           Get.offAllNamed(loginscreen);
+          //         },
+          //       ),
+          //     ],
+          //   ),
+          // ),
 
-              child: Text('Society User'),
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.event,
+          // appBar: AppBar(
+          //   title: Text('Home'),
+          //   backgroundColor: primaryColor,
+          //   actions: [
+          //     Padding(
+          //       padding: EdgeInsets.fromLTRB(0, 10, 15, 0),
+          //       child: Badge(
+          //         badgeContent: Text(
+          //           '10',
+          //           style: TextStyle(color: Colors.white),
+          //         ),
+          //         child: GestureDetector(
+          //             onTap: () {
+          //               Get.toNamed(guestArrivalNotificationScreen);
+          //             },
+          //             child: Icon(Icons.notifications)),
+          //       ),
+          //     )
+          //   ],
+          // ),
+
+          body: Stack(
+            children: [
+              Container(
+                height: Get.height * 0.563,
+                width: Get.width,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/home.jpeg'),
+                        fit: BoxFit.cover)),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 38, top: 78),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Get.back();
+                              },
+                              child: Container(
+                                width: 20,
+                                child: SvgPicture.asset('assets/drawer.svg'),
+                              ),
+                            ),
+                            Text(
+                              'Home',
+                              style: GoogleFonts.ubuntu(
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                  color: Colors.white),
+                            ),
+                            GestureDetector(
+                              onTap: (){
+                                Get.toNamed(preApproveEntryNotificationonScreen,arguments: controller.user);
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 26.69),
+                                child: Container(
+                                  width: 20,
+                                  child:
+                                      SvgPicture.asset('assets/notification.svg'),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 26,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 25),
+                        child: Text(
+                          'Search Your Services',
+                          style: GoogleFonts.ubuntu(
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 19,
+                              color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 13,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 25),
+                        child: Text(
+                          'Please enter services you want',
+                          style: GoogleFonts.ubuntu(
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: HexColor('#FFD2D2')),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 9,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 25),
+                        child: SizedBox(
+                          height: 48,
+                          width: 325,
+                          child: TextField(
+                            decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  onPressed: () {},
+                                  icon: Container(
+                                    child: SvgPicture.asset(
+                                      'assets/arrow.svg',
+                                    ),
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  borderSide:
+                                      BorderSide(color: Color(0xffF4F4F4)),
+                                ),
+                                filled: true,
+                                fillColor: Color(0xffFFFFFF),
+                                labelText: 'Search',
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    style: BorderStyle.solid,
+                                  ),
+                                  borderRadius: BorderRadius.circular(15.0),
+                                )),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 13,
+                      ),
+                      Center(
+                        child: Container(
+                          child: SvgPicture.asset('assets/building.svg'),
+                        ),
+                      )
+                    ]),
               ),
-              title: const Text('Society Events'),
-              onTap: () {
-                Get.toNamed(societyEvents);
-              },
-            ),
-            // ListTile(
-            //   leading: Icon(
-            //     Icons.fact_check,
-            //   ),
-            //   title: const Text('GateKeeper Attendence'),
-            //   onTap: () {
-            //     Get.toNamed(gateKeeperAttendance);
-            //   },
-            // ),
-            // ListTile(
-            //   leading: Icon(
-            //     Icons.people,
-            //   ),
-            //   title: const Text('Add New Pre Approved Guests '),
-            //   onTap: () {
-            //
-            //   },
-            // ),
-
-            ListTile(
-              leading: Icon(
-                Icons.how_to_reg,
-              ),
-              title: const Text('Pre Approved Guests'),
-              onTap: () {
-                Get.toNamed(preApprovedGuests);
-              },
-            ),
-            // ListTile(
-            //   leading: Icon(
-            //     Icons.report,
-            //   ),
-            //   title: const Text('Report to Admin'),
-            //   onTap: () {
-            //     Get.toNamed(reporttoadminscreen);
-            //   },
-            // ),
-
-            ListTile(
-              leading: Icon(
-                Icons.logout,
-              ),
-              title: const Text('Logout'),
-              onTap: () {
-                MySharedPreferences.deleteUserData();
-                Get.offAllNamed(loginscreen);
-              },
-            ),
-
-
-          ],
+              Padding(
+                padding: EdgeInsets.only(top: 440),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: HexColor('#FFFFFF'),
+                  ),
+                  width: Get.width,
+                  height: Get.height,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 25, top: 30),
+                        child: Row(
+                          children: [
+                            Text(
+                              'Our Services',
+                              style: GoogleFonts.ubuntu(
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 15,
+                                  color: HexColor('#666592')),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 154),
+                              child: Text(
+                                'View All',
+                                style: GoogleFonts.ubuntu(
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13,
+                                    color: HexColor('#8584A5')),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            SvgPicture.asset('assets/arrow.svg'),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 19,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(preApproveEntryResidents,arguments: controller.user);
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: SizedBox(
+                            height: 64,
+                            width: 324,
+                            child: Container(
+                              decoration:
+                                  BoxDecoration(color: HexColor('#FAFAFA')),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 30, top: 10),
+                                    child: Row(
+                                      children: [
+                                        CircleAvatar(
+                                            maxRadius: 20,
+                                            backgroundColor: Color.fromRGBO(
+                                                255, 153, 0, 0.35),
+                                            child:
+                                                Image.asset('assets/team.png')),
+                                        SizedBox(
+                                          width: 12,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Pre Approve Entries',
+                                              style: GoogleFonts.ubuntu(
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 13,
+                                                  color: HexColor('#666592')),
+                                            ),
+                                            Text(
+                                              'You Can Pre Approve Your Vistor',
+                                              style: GoogleFonts.ubuntu(
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 10,
+                                                  color: HexColor('#AAA9C9')),
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 59.65),
+                                          child: SvgPicture.asset(
+                                              'assets/greaterthan.svg'),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(eventsscreen, arguments: controller.user);
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: SizedBox(
+                            height: 64,
+                            width: 324,
+                            child: Container(
+                              decoration:
+                                  BoxDecoration(color: HexColor('#FAFAFA')),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 30, top: 10),
+                                    child: Row(
+                                      children: [
+                                        CircleAvatar(
+                                            maxRadius: 20,
+                                            backgroundColor: Color.fromRGBO(
+                                                255, 153, 0, 0.35),
+                                            child: Image.asset(
+                                                'assets/event.png')),
+                                        SizedBox(
+                                          width: 12,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Events',
+                                              style: GoogleFonts.ubuntu(
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 13,
+                                                  color: HexColor('#666592')),
+                                            ),
+                                            Text(
+                                              'You Can View Events',
+                                              style: GoogleFonts.ubuntu(
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 10,
+                                                  color: HexColor('#AAA9C9')),
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.only(left: 115.65),
+                                          child: SvgPicture.asset(
+                                              'assets/greaterthan.svg'),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(noticeboardscreen,
+                              arguments: controller.user);
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: SizedBox(
+                            height: 64,
+                            width: 324,
+                            child: Container(
+                              decoration:
+                                  BoxDecoration(color: HexColor('#FAFAFA')),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 30, top: 10),
+                                    child: Row(
+                                      children: [
+                                        CircleAvatar(
+                                            maxRadius: 20,
+                                            backgroundColor: Color.fromRGBO(
+                                                255, 153, 0, 0.35),
+                                            child: Image.asset(
+                                                'assets/noticeboard.png')),
+                                        SizedBox(
+                                          width: 12,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Notice Board',
+                                              style: GoogleFonts.ubuntu(
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 13,
+                                                  color: HexColor('#666592')),
+                                            ),
+                                            Text(
+                                              'Announcements From Admin',
+                                              style: GoogleFonts.ubuntu(
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 10,
+                                                  color: HexColor('#AAA9C9')),
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 75.65),
+                                          child: SvgPicture.asset(
+                                              'assets/greaterthan.svg'),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
-      appBar: AppBar(
-
-        title: Text('Home'),
-        backgroundColor: primaryColor,
-        actions: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 10, 15, 0),
-            child: Badge(
-              badgeContent: Text(
-                '10',
-                style: TextStyle(color: Colors.white),
-              ),
-              child: GestureDetector(
-                  onTap: () {
-                    Get.toNamed(guestArrivalNotificationScreen);
-                  },
-                  child: Icon(Icons.notifications)),
-            ),
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // Divider(color: primaryColor,thickness: 1,),
-            // Text("Attendance ",style: TextStyle(
-            //     fontWeight: FontWeight.bold,fontSize: 20),),
-            // Divider(color: primaryColor,thickness: 1,),
-            // Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //   children: [
-            //
-            //   GestureDetector(onTap: (){
-            //     Get.toNamed(gateKeeperAttendance);
-            //
-            //
-            //   },
-            //     child: Container(
-            //       height: 100,width: 100,
-            //       decoration: BoxDecoration(
-            //
-            //         // color: primaryColor,
-            //           borderRadius: BorderRadius.circular(8),border: Border.all(
-            //
-            //           color: primaryColor,width: 2,
-            //
-            //           style: BorderStyle.solid)
-            //       ),
-            //       child:
-            //       Column(mainAxisAlignment: MainAxisAlignment.center,
-            //         children: [
-            //           Icon(Icons.fact_check_rounded,color: primaryColor,),
-            //           Text("Gate Keeper Attendence",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500),textAlign: TextAlign.center,maxLines: 3,
-            //             overflow: TextOverflow.ellipsis,)
-            //
-            //         ],),),
-            //   ),
-            //   GestureDetector(onTap: (){
-            //
-            //     Get.toNamed(serviceProviderCheckIn);
-            //   },
-            //     child: Container(height: 100,width: 100,
-            //       decoration: BoxDecoration(
-            //
-            //         // color: primaryColor,
-            //           borderRadius: BorderRadius.circular(8),border: Border.all(
-            //
-            //           color: primaryColor,width: 2 ,
-            //
-            //           style: BorderStyle.solid)
-            //       ),
-            //       child:
-            //       Column(mainAxisAlignment: MainAxisAlignment.center,
-            //         children: [
-            //           Icon(Icons.arrow_forward,color: primaryColor,),
-            //           Text("Service Provider CheckIn",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500),textAlign: TextAlign.center,maxLines: 3,
-            //             overflow: TextOverflow.ellipsis,)
-            //
-            //         ],),),
-            //   ),
-            //     GestureDetector(onTap: (){
-            //
-            //       Get.toNamed(serviceProviderCheckOut);
-            //     },
-            //       child: Container(height: 100,width: 100,
-            //         decoration: BoxDecoration(
-            //
-            //           // color: primaryColor,
-            //             borderRadius: BorderRadius.circular(8),border: Border.all(
-            //
-            //             color: primaryColor,width: 2 ,
-            //
-            //             style: BorderStyle.solid)
-            //         ),
-            //         child:
-            //         Column(mainAxisAlignment: MainAxisAlignment.center,
-            //           children: [
-            //             Icon(Icons.arrow_back,color: primaryColor,),
-            //             Text("Service Provider CheckOut",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500,),textAlign: TextAlign.center,maxLines: 3,
-            //               overflow: TextOverflow.ellipsis,)
-            //
-            //           ],),),
-            //     ),
-            //
-            // ],),
-            // Divider(color: primaryColor,thickness: 1,),
-            // Text("Guests",style: TextStyle(
-            //     fontWeight: FontWeight.bold,fontSize: 20),),
-            // Divider(color: primaryColor,thickness: 1,),
-Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-  children: [
-
-  GestureDetector(onTap: (){
-
-Get.toNamed(preApprovedGuests);
-  },
-    child: Container(height: 100,width: 100,
-      decoration: BoxDecoration(
-
-        // color: primaryColor,
-          borderRadius: BorderRadius.circular(8),border: Border.all(
-
-          color: primaryColor,width: 2 ,
-          )
-      ),
-      child:
-      Column(mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.group,color: primaryColor,),
-          Text("Pre Approved Guests",style:
-          TextStyle(color: Colors.black,fontWeight: FontWeight.w500),
-            textAlign: TextAlign.center,maxLines: 3,
-            overflow: TextOverflow.ellipsis,)
-
-        ],),),
-  ),
-
-    // GestureDetector(onTap: (){
-    //   Get.toNamed(walkInGuests);
-    //
-    // },
-    //   child: Container(height: 100,width: 100,
-    //     decoration: BoxDecoration(
-    //
-    //       // color: primaryColor,
-    //         borderRadius: BorderRadius.circular(8),border: Border.all(
-    //
-    //         color: primaryColor,width: 2 ,
-    //
-    //         style: BorderStyle.solid)
-    //     ),
-    //     child:
-    //     Column(mainAxisAlignment: MainAxisAlignment.center,
-    //       children: [
-    //
-    //
-    //         Icon(Icons.person_add,color: primaryColor,),
-    //         Text("Walkin Guests ",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500),textAlign: TextAlign.center,maxLines: 3,
-    //           overflow: TextOverflow.ellipsis,)
-    //
-    //       ],),),
-    // ),
-
-
-  ],),
-            Divider(color: primaryColor,thickness: 1,),
-            Text("Services",style: TextStyle(
-                fontWeight: FontWeight.bold,fontSize: 20),),
-            Divider(color: primaryColor,thickness: 1,),
-
-            Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-              // GestureDetector(onTap: (){
-              //
-              //   Get.toNamed(panicMode);
-              // },
-              //   child: Container(height: 100,width: 100,
-              //     decoration: BoxDecoration(
-              //
-              //       // color: primaryColor,
-              //         borderRadius: BorderRadius.circular(8),border: Border.all(
-              //
-              //       color: primaryColor,width: 2,
-              //
-              //     )
-              //     ),
-              //     child:
-              //     Column(mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Icon(Icons.warning,color: primaryColor,),
-              //         Text("Panic Mode",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500),textAlign: TextAlign.center,maxLines: 3,
-              //           overflow: TextOverflow.ellipsis,)
-              //
-              //       ],),),
-              // ),
-              GestureDetector(onTap: (){
-                Get.toNamed(eventsscreen,arguments: user);
-
-              },
-                child: Container(height: 100,width: 100,
-                  decoration: BoxDecoration(
-
-                    // color: primaryColor,
-                      borderRadius: BorderRadius.circular(8),border: Border.all(
-
-                    color: primaryColor,width: 2,
-
-                  )
-                  ),
-                  child:
-                  Column(mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.event,color: primaryColor,),
-                      Text("Events",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500),textAlign: TextAlign.center,maxLines: 3,
-                        overflow: TextOverflow.ellipsis,)
-
-                    ],),),
-              ),
-              // GestureDetector(onTap: (){
-              //
-              //   Get.toNamed(reporttoadminscreen);
-              // },
-              //   child: Container(height: 100,width: 100,
-              //     decoration: BoxDecoration(
-              //
-              //       // color: primaryColor,
-              //         borderRadius: BorderRadius.circular(8),border: Border.all(
-              //
-              //       color: primaryColor,width: 2 ,
-              //
-              //     )
-              //     ),
-              //     child:
-              //     Column(mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Icon(Icons.report,color: primaryColor,),
-              //         Text("Reports",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500),textAlign: TextAlign.center,maxLines: 3,
-              //           overflow: TextOverflow.ellipsis,)
-              //
-              //       ],),),
-              // ),
-              GestureDetector(onTap: (){
-
-                Get.toNamed(noticeboardscreen,arguments: user);
-              },
-                child: Container(height: 100,width: 100,
-                  decoration: BoxDecoration(
-
-                    // color: primaryColor,
-                      borderRadius: BorderRadius.circular(8),border: Border.all(
-
-                    color: primaryColor,width: 2 ,
-
-                  )
-                  ),
-                  child:
-                  Column(mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.report,color: primaryColor,),
-                      Text("NoticeBoard",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500),textAlign: TextAlign.center,maxLines: 3,
-                        overflow: TextOverflow.ellipsis,)
-
-                    ],),),
-              ),
-
-
-            ],)
-
-
-
-
-
-
-       ]
-
-
-
-      )),
-      // floatingActionButton: FloatingActionButton(
-      //     backgroundColor: primaryColor,
-      //     onPressed: () {
-      //       Get.toNamed(chatavailbilityscreen);
-      //     },
-      //     child: const Icon(Icons.chat)),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 
-final Color primaryColor = HexColor("#00BFA6");
+final Color primaryColor = HexColor("#FF9900");
 const String assetsBaseUrl = "assets/";
 const String logo = '${assetsBaseUrl}mia.png';
 
