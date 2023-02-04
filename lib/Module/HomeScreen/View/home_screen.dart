@@ -52,7 +52,9 @@ class HomeScreen extends StatelessWidget {
           //           MySharedPreferences.deleteUserData();
           //           Get.offAllNamed(loginscreen);
           //         },
+
           //       ),
+
           //     ],
           //   ),
           // ),
@@ -96,9 +98,7 @@ class HomeScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             GestureDetector(
-                              onTap: () {
-                                Get.back();
-                              },
+                              onTap: () {},
                               child: Container(
                                 width: 20,
                                 child: SvgPicture.asset('assets/drawer.svg'),
@@ -113,15 +113,16 @@ class HomeScreen extends StatelessWidget {
                                   color: Colors.white),
                             ),
                             GestureDetector(
-                              onTap: (){
-                                Get.toNamed(preApproveEntryNotificationonScreen,arguments: controller.user);
+                              onTap: () {
+                                Get.toNamed(preApproveEntryNotificationonScreen,
+                                    arguments: controller.user);
                               },
                               child: Padding(
                                 padding: EdgeInsets.only(right: 26.69),
                                 child: Container(
                                   width: 20,
-                                  child:
-                                      SvgPicture.asset('assets/notification.svg'),
+                                  child: SvgPicture.asset(
+                                      'assets/notification.svg'),
                                 ),
                               ),
                             ),
@@ -248,7 +249,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.toNamed(preApproveEntryResidents,arguments: controller.user);
+                          Get.toNamed(preApproveEntryResidents,
+                              arguments: controller.user);
                         },
                         child: Padding(
                           padding: EdgeInsets.only(left: 20),
@@ -440,6 +442,240 @@ class HomeScreen extends StatelessWidget {
                                       ],
                                     ),
                                   ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.fromLTRB(
+                                  //       35, 23, 286, 8),
+                                  //   child: Text(
+                                  //     "Coversations",
+                                  //     style: GoogleFonts.ubuntu(
+                                  //         fontStyle: FontStyle.normal,
+                                  //         fontWeight: FontWeight.w600,
+                                  //         fontSize: 14,
+                                  //         color: HexColor('#585353')),
+                                  //   ),
+                                  // ),
+                                  // Padding(
+                                  //   padding:
+                                  //       const EdgeInsets.fromLTRB(35, 8, 21, 0),
+                                  //   child: Row(
+                                  //     children: [
+                                  //       SizedBox(
+                                  //         width: 140,
+                                  //         height: 65,
+                                  //         child: GestureDetector(
+                                  //           onTap: () {
+                                  //             // Get.toNamed(chatavailbilityscreen,
+                                  //             //     arguments: [
+                                  //             //         _homeScreenController.user,
+                                  //             //           snapshot.data[0]]);
+                                  //           },
+                                  //           child: Card(
+                                  //             child: Column(
+                                  //               crossAxisAlignment:
+                                  //                   CrossAxisAlignment.start,
+                                  //               children: [
+                                  //                 Padding(
+                                  //                   padding: const EdgeInsets
+                                  //                       .fromLTRB(13, 1, 0, 0),
+                                  //                   child: SvgPicture.asset(
+                                  //                       'assets/undraw_share_opinion_re_4qk7.svg',
+                                  //                       height: 25,
+                                  //                       width: 25),
+                                  //                 ),
+                                  //                 Padding(
+                                  //                   padding: const EdgeInsets
+                                  //                       .fromLTRB(13, 4, 0, 4),
+                                  //                   child: Text(
+                                  //                     'Chats',
+                                  //                     style: GoogleFonts.ubuntu(
+                                  //                         fontStyle:
+                                  //                             FontStyle.normal,
+                                  //                         fontWeight:
+                                  //                             FontWeight.w400,
+                                  //                         fontSize: 10,
+                                  //                         color: HexColor(
+                                  //                             '#585353')),
+                                  //                   ),
+                                  //                 ),
+                                  //                 Padding(
+                                  //                   padding: const EdgeInsets
+                                  //                       .fromLTRB(13, 0, 0, 0),
+                                  //                   child: Text(
+                                  //                     'Chat with Neighbours/Gatekeepers',
+                                  //                     style: GoogleFonts.ubuntu(
+                                  //                         fontStyle:
+                                  //                             FontStyle.normal,
+                                  //                         fontWeight:
+                                  //                             FontWeight.w400,
+                                  //                         fontSize: 7,
+                                  //                         color: HexColor(
+                                  //                             '#8A8A8A')),
+                                  //                   ),
+                                  //                 ),
+                                  //               ],
+                                  //             ),
+                                  //             elevation: 1.6,
+                                  //             shape: RoundedRectangleBorder(
+                                  //                 borderRadius:
+                                  //                     BorderRadius.circular(
+                                  //                         12)),
+                                  //           ),
+                                  //         ),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(chatavailbilityscreen,
+                              arguments: controller.user);
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: SizedBox(
+                            height: 64,
+                            width: 324,
+                            child: Container(
+                              decoration:
+                                  BoxDecoration(color: HexColor('#FAFAFA')),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 30, top: 10),
+                                    child: Row(
+                                      children: [
+                                        CircleAvatar(
+                                            maxRadius: 20,
+                                            backgroundColor: Color.fromRGBO(
+                                                255, 153, 0, 0.35),
+                                            child: Image.asset(
+                                                'assets/noticeboard.png')),
+                                        SizedBox(
+                                          width: 12,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Chat',
+                                              style: GoogleFonts.ubuntu(
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 13,
+                                                  color: HexColor('#666592')),
+                                            ),
+                                            Text(
+                                              'Chat with Residents/Guards',
+                                              style: GoogleFonts.ubuntu(
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 10,
+                                                  color: HexColor('#AAA9C9')),
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 75.65),
+                                          child: SvgPicture.asset(
+                                              'assets/greaterthan.svg'),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.fromLTRB(
+                                  //       35, 23, 286, 8),
+                                  //   child: Text(
+                                  //     "Coversations",
+                                  //     style: GoogleFonts.ubuntu(
+                                  //         fontStyle: FontStyle.normal,
+                                  //         fontWeight: FontWeight.w600,
+                                  //         fontSize: 14,
+                                  //         color: HexColor('#585353')),
+                                  //   ),
+                                  // ),
+                                  // Padding(
+                                  //   padding:
+                                  //       const EdgeInsets.fromLTRB(35, 8, 21, 0),
+                                  //   child: Row(
+                                  //     children: [
+                                  //       SizedBox(
+                                  //         width: 140,
+                                  //         height: 65,
+                                  //         child: GestureDetector(
+                                  //           onTap: () {
+                                  //             // Get.toNamed(chatavailbilityscreen,
+                                  //             //     arguments: [
+                                  //             //         _homeScreenController.user,
+                                  //             //           snapshot.data[0]]);
+                                  //           },
+                                  //           child: Card(
+                                  //             child: Column(
+                                  //               crossAxisAlignment:
+                                  //                   CrossAxisAlignment.start,
+                                  //               children: [
+                                  //                 Padding(
+                                  //                   padding: const EdgeInsets
+                                  //                       .fromLTRB(13, 1, 0, 0),
+                                  //                   child: SvgPicture.asset(
+                                  //                       'assets/undraw_share_opinion_re_4qk7.svg',
+                                  //                       height: 25,
+                                  //                       width: 25),
+                                  //                 ),
+                                  //                 Padding(
+                                  //                   padding: const EdgeInsets
+                                  //                       .fromLTRB(13, 4, 0, 4),
+                                  //                   child: Text(
+                                  //                     'Chats',
+                                  //                     style: GoogleFonts.ubuntu(
+                                  //                         fontStyle:
+                                  //                             FontStyle.normal,
+                                  //                         fontWeight:
+                                  //                             FontWeight.w400,
+                                  //                         fontSize: 10,
+                                  //                         color: HexColor(
+                                  //                             '#585353')),
+                                  //                   ),
+                                  //                 ),
+                                  //                 Padding(
+                                  //                   padding: const EdgeInsets
+                                  //                       .fromLTRB(13, 0, 0, 0),
+                                  //                   child: Text(
+                                  //                     'Chat with Neighbours/Gatekeepers',
+                                  //                     style: GoogleFonts.ubuntu(
+                                  //                         fontStyle:
+                                  //                             FontStyle.normal,
+                                  //                         fontWeight:
+                                  //                             FontWeight.w400,
+                                  //                         fontSize: 7,
+                                  //                         color: HexColor(
+                                  //                             '#8A8A8A')),
+                                  //                   ),
+                                  //                 ),
+                                  //               ],
+                                  //             ),
+                                  //             elevation: 1.6,
+                                  //             shape: RoundedRectangleBorder(
+                                  //                 borderRadius:
+                                  //                     BorderRadius.circular(
+                                  //                         12)),
+                                  //           ),
+                                  //         ),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),

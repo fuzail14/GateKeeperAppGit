@@ -19,6 +19,13 @@ const String addWalkInGuestsDetail = '/AddWalkInGuestsDetail';
 const String panicMode = '/PanicMode';
 const String eventsscreen = '/EventsScreen';
 const String noticeboardscreen = '/NoticeBoardScreen';
+const String neighbourchatscreen = '/NeighbourChatScreen';
+const String audiocallscreen = '/AudioCallScreen';
+
+
+
+
+
 
 
 

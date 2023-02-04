@@ -66,19 +66,20 @@ class _ReportToAdminScreenState extends State<ReportToAdminScreen> {
                       trailing: Wrap(children: [
                         InkWell(
                           onTap: () {
-                            AwesomeDialog(
-                              context: context,
-                              dialogType: DialogType.QUESTION,
-                              animType: AnimType.BOTTOMSLIDE,
-                              title: 'Are You Sure',
-                              desc:
-                                  'Are You Sure You Want To Delete This.............',
-                              btnCancelOnPress: () {},
-                              btnOkOnPress: () {},
-                              btnOkText: 'Delete',
-                              btnOkColor: primaryColor,
-                              btnCancelColor: primaryColor,
-                            )..show();
+                            // AwesomeDialog(
+                            //   context: context,
+                            //   dialogType: DialogType.QUESTION,
+                            //   animType: AnimType.BOTTOMSLIDE,
+                            //   title: 'Are You Sure',
+                            //   desc:
+                            //       'Are You Sure You Want To Delete This.............',
+                            //   btnCancelOnPress: () {},
+                            //   btnOkOnPress: () {},
+                            //   btnOkText: 'Delete',
+                            //   btnOkColor: primaryColor,
+                            //   btnCancelColor: primaryColor,
+                            // )..show();
+                        
                           },
                           child: Icon(
                             Icons.delete,

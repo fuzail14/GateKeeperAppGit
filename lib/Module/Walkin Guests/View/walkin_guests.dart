@@ -300,22 +300,22 @@ class _WalkinGuestsState extends State<WalkinGuests> {
                           child: ElevatedButton(
                             onPressed: () {
 
-                              AwesomeDialog(
-                                context: context,
-                                dialogType: DialogType.QUESTION,
-                                animType: AnimType.BOTTOMSLIDE,
-                                title: 'Are You Sure',
-                                desc:
-                                'Are You Sure You Want To CheckOut.............',
-                                btnCancelOnPress: () {},
-                                btnOkOnPress: () {
-                                  isChecked = true;
-                                  setState(() {});
-                                },
-                                btnOkText: 'Yes',
-                                btnOkColor: primaryColor,
-                                btnCancelColor: primaryColor,
-                              )..show();
+                              // AwesomeDialog(
+                              //   context: context,
+                              //   dialogType: DialogType.QUESTION,
+                              //   animType: AnimType.BOTTOMSLIDE,
+                              //   title: 'Are You Sure',
+                              //   desc:
+                              //   'Are You Sure You Want To CheckOut.............',
+                              //   btnCancelOnPress: () {},
+                              //   btnOkOnPress: () {
+                              //     isChecked = true;
+                              //     setState(() {});
+                              //   },
+                              //   btnOkText: 'Yes',
+                              //   btnOkColor: primaryColor,
+                              //   btnCancelColor: primaryColor,
+                              // )..show();
 
                             },
                             child: Text("Check out"),

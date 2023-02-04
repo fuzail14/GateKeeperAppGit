@@ -213,23 +213,24 @@ class _GateKeeperAttendenceState extends State<GateKeeperAttendence> {
                                 width: MediaQuery.of(context).size.width,
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    AwesomeDialog(
-                                      context: context,
-                                      dialogType: DialogType.QUESTION,
-                                      animType: AnimType.BOTTOMSLIDE,
-                                      title: 'Are You Sure',
-                                      desc:
-                                          'Are You Sure You Want To CheckOut.............',
-                                      btnCancelOnPress: () {},
-                                      btnOkOnPress: () {
-                                        isChecked2 = true;
-                                        setState(() {});
-                                      },
-                                      btnOkText: 'Yes',
-                                      btnOkColor: primaryColor,
-                                      btnCancelColor: primaryColor,
-                                    )..show();
-                                    setState(() {});
+                                    // AwesomeDialog(
+                                    //   context: context,
+                                    //   dialogType: DialogType.QUESTION,
+                                    //   animType: AnimType.BOTTOMSLIDE,
+                                    //   title: 'Are You Sure',
+                                    //   desc:
+                                    //       'Are You Sure You Want To CheckOut.............',
+                                    //   btnCancelOnPress: () {},
+                                    //   btnOkOnPress: () {
+                                    //     isChecked2 = true;
+                                    //     setState(() {});
+                                    //   },
+                                    //   btnOkText: 'Yes',
+                                    //   btnOkColor: primaryColor,
+                                    //   btnCancelColor: primaryColor,
+                                    // )..show();
+                                    // setState(() {});
+                               
                                   },
                                   child: Text(
                                     "Check Out",
